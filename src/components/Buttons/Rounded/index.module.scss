@@ -1,0 +1,22 @@
+.rounded {
+  cursor: pointer;
+  border-radius: 30px;
+  width: 200px;
+  height: 50px;
+  font-size: 22px;
+  letter-spacing: 1px;
+
+  transition: all 0.2s ease;
+  &:hover {
+    transform: scale(0.99);
+  }
+}
+
+.primary {
+  background-color: #fff;
+  color: #000;
+}
+.secondary {
+  background-color: #000;
+  color: #fff;
+}
