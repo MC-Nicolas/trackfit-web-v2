@@ -5,28 +5,26 @@ import styles from './index.module.scss';
 
 type TextProps = {
   text: string;
-  type: 'homeTitle' | 'homeDescription';
+  type: 'homeTitle' | 'homeDescription' | 'sectionTitle';
   [key: string]: any;
 };
 
 const Text = ({ text, type, ...rest }: TextProps): JSX.Element => {
   const textRenderer = (): JSX.Element => {
-    let textComponent = null;
     switch (type) {
       case 'homeTitle':
-        textComponent = <Title text={text} type="h1" {...rest} className={styles.homeTitle} />;
-        break;
+        return <Title text={text} type="h1" {...rest} className={styles.homeTitle} />;
       case 'homeDescription':
-        textComponent = (
+        return (
           <p className={styles.homeDescription} {...rest}>
             {text}
           </p>
         );
-        break;
+      case 'sectionTitle':
+        return <Title text={text} type="h2" {...rest} />;
       default:
-        textComponent = <p>Error in your text</p>;
+        return <p>Error in your text</p>;
     }
-    return textComponent;
   };
   return textRenderer();
 };

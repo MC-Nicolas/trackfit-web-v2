@@ -2,24 +2,39 @@ import React from 'react';
 import Rounded from './Rounded';
 
 type ButtonProps = {
-  type: 'login' | 'signup';
+  text?: string;
+  type: 'login' | 'signup' | 'rounded';
   variant?: 'primary' | 'secondary';
+  isLink?: boolean;
+  href?: string;
 };
 
-const Button = ({ type, variant = 'primary' }: ButtonProps): JSX.Element => {
+const Button = ({
+  text,
+  type,
+  variant = 'primary',
+  isLink = false,
+  href,
+}: ButtonProps): JSX.Element => {
   const buttonsRenderer = (): JSX.Element => {
-    let button = null;
     switch (type) {
       case 'login':
-        button = <Rounded text="Login" variant="primary" />;
-        break;
+        return <Rounded text="Login" variant="primary" isLink href="/login" />;
       case 'signup':
-        button = <Rounded text="Sign up" variant="secondary" />;
-        break;
+        return <Rounded text="Sign up" variant="secondary" isLink href="/signup" />;
+      case 'rounded':
+        return (
+          <Rounded
+            text={text ?? 'Error in your button'}
+            variant={variant}
+            isLink={isLink}
+            href={href}
+          />
+        );
+
       default:
-        button = <button>Error in your button </button>;
+        return <button>Error in your button </button>;
     }
-    return button;
   };
   return buttonsRenderer();
 };

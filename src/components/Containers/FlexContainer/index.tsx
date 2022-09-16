@@ -22,7 +22,6 @@ const FlexContainer = ({
   height = '100%',
   ...rest
 }: FlexContainerProps) => {
-  console.log(justify);
   return (
     <div
       className={`${styles.flex} 

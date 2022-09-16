@@ -1,0 +1,45 @@
+.form {
+  position: absolute;
+  inset: 2px;
+  background-color: #111;
+  z-index: 10;
+  border-radius: inherit;
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+
+  & > h2 {
+    color: #45f3ff;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.1rem;
+  }
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+  & > a {
+    margin: 10px 0;
+    font-size: 0.75em;
+    color: #8f8f8f;
+
+    &:hover {
+      color: #45f3ff;
+    }
+  }
+}
+.submit {
+  border: none;
+  outline: none;
+  background: #45f3ff;
+  padding: 11px 25px;
+  width: 100px;
+  margin-top: 40px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  &:active {
+    opacity: 0.8;
+  }
+}

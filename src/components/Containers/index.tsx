@@ -1,8 +1,9 @@
 import React from 'react';
+import BorderAnimated from './BorderAnimated';
 import FlexContainer from './FlexContainer';
 
 type ContainerProps = {
-  type: 'flexHorizontal' | 'flexVertical';
+  type: 'flexHorizontal' | 'flexVertical' | 'borderAnimated';
   children: JSX.Element | JSX.Element[];
   width?: string;
   height?: string;
@@ -29,6 +30,13 @@ const Container = ({
           <FlexContainer justify="evenly" width={width} height={height} {...rest}>
             {children}
           </FlexContainer>
+        );
+
+      case 'borderAnimated':
+        return (
+          <BorderAnimated width={width} height={height}>
+            {children}
+          </BorderAnimated>
         );
 
       default:

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '../../Buttons';
 import Container from '../../Containers';
 import Overlay from '../../Overlay';
@@ -7,6 +7,7 @@ import Text from '../../Texts';
 import styles from './Background.module.scss';
 
 const Background = () => {
+  const [userIsAuthenticated, setUserIsAuthenticated] = useState(true);
   return (
     <div className={styles.main}>
       <Overlay opacity={0.5} />
@@ -17,15 +18,21 @@ const Background = () => {
         style={{ height: '100%', width: '100%', objectFit: 'cover' }}
         className={styles.video}
       >
-        <source src="/videos/BW.mp4" type="video/mp4" />
+        <source src="/videos/BW3.mp4" type="video/mp4" />
       </video>
       <div className={styles.content}>
         <Container type="flexVertical" width="50%" height="300px">
           <Text text="Welcome to Track Fit" type="homeTitle" />
           <Text text="Track your health and fitness" type="homeDescription" />
           <Container type="flexHorizontal" height="80px" width="60%">
-            <Button type="login" />
-            <Button type="signup" />
+            {userIsAuthenticated ? (
+              <Button text="Start" type="rounded" isLink href="/dashboard" />
+            ) : (
+              <>
+                <Button type="login" />
+                <Button type="signup" />
+              </>
+            )}
           </Container>
         </Container>
       </div>

@@ -7,15 +7,12 @@ type VideoProps = {
 
 const Video = ({ type }: VideoProps) => {
   const videoRenderer = (): JSX.Element => {
-    let videoComponent = null;
     switch (type) {
       case 'background':
-        videoComponent = <Background />;
-        break;
+        return <Background />;
       default:
-        videoComponent = <p>Video</p>;
+        return <p>Video</p>;
     }
-    return videoComponent;
   };
   return videoRenderer();
 };
