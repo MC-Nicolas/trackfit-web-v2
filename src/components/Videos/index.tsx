@@ -11,7 +11,7 @@ const Video = ({ type }: VideoProps) => {
       case 'background':
         return <Background />;
       default:
-        return <p>Video</p>;
+        return <p>Error with your video</p>;
     }
   };
   return videoRenderer();

@@ -1,9 +1,15 @@
+import Container from '@/components/Containers';
+import { containerTypes } from '@/components/Containers/types';
 import type { AppProps } from 'next/app';
-import { Toaster } from 'react-hot-toast';
+
 import '../styles/globals.css';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
-}
+const MyApp = ({ Component, pageProps }: AppProps) => {
+  return (
+    <Container type={containerTypes.LAYOUT}>
+      <Component {...pageProps} />
+    </Container>
+  );
+};
 
 export default MyApp;

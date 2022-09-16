@@ -1,6 +1,5 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Text from '../components/Texts';
 import Video from '../components/Videos';
 import styles from '../styles/Home.module.scss';
 

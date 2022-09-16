@@ -2,10 +2,19 @@
   font-size: 6rem;
   font-weight: 700;
   color: #fff;
+  text-align: center;
+  @media screen and (max-width: 768px) {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
 }
 
 .homeDescription {
   font-size: 1.5rem;
   font-weight: 400;
   color: rgb(154, 154, 154);
+  text-align: center;
+  @media screen and (max-width: 768px) {
+    margin-bottom: 20px;
+  }
 }

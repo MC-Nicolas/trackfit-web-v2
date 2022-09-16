@@ -11,18 +11,13 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "next": "12.3.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
-  },
-  "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@mui/icons-material": "^5.10.3",
     "@mui/material": "^5.10.4",
     "@reduxjs/toolkit": "^1.8.5",
     "firebase": "^9.9.4",
-    "framer-motion": "^7.3.2",
+    "framer-motion": "^7.3.5",
     "highcharts": "^10.2.1",
     "highcharts-react-official": "^3.1.0",
     "next": "12.2.5",
@@ -43,8 +38,8 @@
     "@storybook/manager-webpack5": "^6.5.10",
     "@storybook/react": "^6.5.10",
     "@storybook/testing-library": "^0.0.13",
-    "@types/node": "18.7.16",
-    "@types/react": "18.0.18",
+    "@types/node": "^18.7.18",
+    "@types/react": "^18.0.20",
     "@types/react-dom": "18.0.6",
     "babel-loader": "^8.2.5",
     "eslint": "8.23.0",

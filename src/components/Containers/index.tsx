@@ -1,9 +1,11 @@
 import React from 'react';
 import BorderAnimated from './BorderAnimated';
 import FlexContainer from './FlexContainer';
+import Layout from './Layout';
+import { containerTypes } from './types';
 
 type ContainerProps = {
-  type: 'flexHorizontal' | 'flexVertical' | 'borderAnimated';
+  type: string;
   children: JSX.Element | JSX.Element[];
   width?: string;
   height?: string;
@@ -19,25 +21,26 @@ const Container = ({
 }: ContainerProps): JSX.Element => {
   const containerRenderer = (): JSX.Element => {
     switch (type) {
-      case 'flexHorizontal':
+      case containerTypes.FLEX_HORIZONTAL:
         return (
           <FlexContainer direction="row" justify="evenly" width={width} height={height} {...rest}>
             {children}
           </FlexContainer>
         );
-      case 'flexVertical':
+      case containerTypes.FLEX_VERTICAL:
         return (
           <FlexContainer justify="evenly" width={width} height={height} {...rest}>
             {children}
           </FlexContainer>
         );
-
-      case 'borderAnimated':
+      case containerTypes.BORDER_ANIMATED:
         return (
           <BorderAnimated width={width} height={height}>
             {children}
           </BorderAnimated>
         );
+      case containerTypes.LAYOUT:
+        return <Layout>{children}</Layout>;
 
       default:
         return <div>Error with your container</div>;
