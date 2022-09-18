@@ -2,23 +2,40 @@ import Input from '@/components/Inputs';
 import { inputTypes } from '@/components/Inputs/types';
 import { exercicesCategories } from '@/data/exercices';
 import useExercices from '@/hooks/useExercices';
-import React, { useState } from 'react';
+import {
+  setExercice,
+  setExerciceBy,
+  setExerciceCategory,
+  setResults,
+  setTypeOfResultOption,
+} from '@/redux/exercicesSelectors/exercicesSelectorsSlice';
+import { useAppDispatch, useAppSelector } from '@/redux/redux.hooks';
+import React, { useEffect, useState } from 'react';
 import Container from '..';
 import { containerTypes } from '../types';
 
 type Props = {};
 
 const ExerciceSelectors = (props: Props) => {
-  const [exerciceCategory, setExerciceCategory] = useState('Cardio');
-  const [exercice, setExercice] = useState<null | string>(null);
-  const [by, setBy] = useState<null | string>(null);
-  const [typeOfResultOption, setTypeOfResultOption] = useState<null | string>(null);
+  const dispatch = useAppDispatch();
+  const { exercice, category, by, typeOfResultOption } = useAppSelector(
+    (state) => state.exercicesSelectors
+  );
   const { exercices, byOptions, typeOfResultOptions, results } = useExercices({
-    category: exerciceCategory,
+    category: category,
     exercice,
     by,
     typeOfResult: typeOfResultOption,
   });
+
+  useEffect(() => {
+    if (!category || !exercice || !by || !typeOfResultOption) {
+      dispatch(setResults([]));
+      return;
+    }
+    dispatch(setResults(results));
+  }, [results, by, dispatch, category, exercice, typeOfResultOption]);
+
   return (
     <Container
       type={containerTypes.FLEX_HORIZONTAL}
@@ -29,29 +46,31 @@ const ExerciceSelectors = (props: Props) => {
         type={inputTypes.AUTOCOMPLETE}
         label="Category"
         options={exercicesCategories}
-        value={exerciceCategory}
-        onChange={(e: React.SyntheticEvent, value: string) => setExerciceCategory(value)}
+        value={category}
+        onChange={(e: React.SyntheticEvent, value: string) => dispatch(setExerciceCategory(value))}
       />
       <Input
         type={inputTypes.AUTOCOMPLETE}
         label="Exercice"
         options={exercices}
         value={exercice ?? ''}
-        onChange={(e: React.SyntheticEvent, value: string) => setExercice(value)}
+        onChange={(e: React.SyntheticEvent, value: string) => dispatch(setExercice(value))}
       />
       <Input
         type={inputTypes.AUTOCOMPLETE}
         label="By"
         options={byOptions}
         value={by ?? ''}
-        onChange={(e: React.SyntheticEvent, value: string) => setBy(value)}
+        onChange={(e: React.SyntheticEvent, value: string) => dispatch(setExerciceBy(value))}
       />
       <Input
         type={inputTypes.AUTOCOMPLETE}
         label="Target"
         options={typeOfResultOptions}
         value={typeOfResultOption ?? ''}
-        onChange={(e: React.SyntheticEvent, value: string) => setTypeOfResultOption(value)}
+        onChange={(e: React.SyntheticEvent, value: string) =>
+          dispatch(setTypeOfResultOption(value))
+        }
       />
     </Container>
   );

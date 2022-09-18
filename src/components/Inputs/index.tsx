@@ -16,7 +16,9 @@ const Input = ({ type, inputType = 'text', label, value, options, onChange }: In
   const inputRenderer = (): JSX.Element => {
     switch (type) {
       case inputTypes.ANIMATED_WITH_LABEL:
-        return <AnimatedWithLabel type={inputType} label={label} />;
+        return (
+          <AnimatedWithLabel type={inputType} label={label} value={value} onChange={onChange} />
+        );
       case inputTypes.AUTOCOMPLETE:
         return (
           <AutoComplete

@@ -1,8 +1,10 @@
-import { formatIdToDate, fromSecondsToTime } from '@/utils/format';
+import { deepCopy, formatIdToDate, fromSecondsToTime } from '@/utils/format';
+import { sortByDate } from '@/utils/sorting';
 
 export interface seriesType {
   name: string;
   data: number[];
+  [key: string]: any;
 }
 
 export type xAxisType = [{ categories: string[] }];
@@ -12,19 +14,32 @@ export const generateConfig = (
     name: string;
     id: string;
     result: number;
+    difficulty: string;
   }[],
   by: string
-): { series: seriesType; xAxis: xAxisType; tooltip: any } => {
+): { series: seriesType[]; xAxis: xAxisType; tooltip: any } => {
   const tooltip = generateTooltip(by);
-  const series: seriesType = {
-    name: 'Results',
-    data: [],
-  };
+  const series: seriesType[] = [
+    {
+      name: 'Results',
+      data: [],
+    },
+    {
+      name: 'Difficulty',
+      data: [],
+      color: '#d96c00',
+    },
+  ];
   const xAxis: xAxisType = [{ categories: [] }];
-  data.forEach((item) => {
-    series.data.push(item.result);
+  const d = deepCopy(data);
+  sortByDate(d);
+
+  d.forEach((item) => {
+    series[0].data.push(item.result);
+    series[1].data.push(Number(item.difficulty));
     xAxis[0].categories.push(formatIdToDate(item.id));
   });
+
   return { series, xAxis, tooltip };
 };
 

@@ -40,3 +40,26 @@ export const formatFRDateToNewDate = (date: string | number) => {
 export const formatIdToDate = (id: string): string => {
   return `${id.slice(0, 2)}/${id.slice(2, 4)}/${id.slice(4, 8)}`;
 };
+
+export const handleResultFormat = (result: string, resultFormat: string) => {
+  if (resultFormat === 'time') {
+    const [hours, minutes, seconds] = result.split(':');
+    return Number(hours) * 3600 + Number(minutes) * 60 + Number(seconds);
+  } else {
+    return Number(result);
+  }
+};
+
+export const autoFormatInput = (value: string | undefined, format: string) => {
+  if (!value) return '';
+  if (format === 'date') {
+    if (value.match(/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/(19|20)\d\d$/)) {
+      return value;
+    }
+    if (value.length === 2) {
+      return `${value}/`;
+    } else if (value.length === 5) {
+      return `${value}/`;
+    }
+  }
+};

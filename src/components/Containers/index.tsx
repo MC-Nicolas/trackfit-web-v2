@@ -1,5 +1,6 @@
 import React from 'react';
 import BorderAnimated from './BorderAnimated';
+import ExerciceSelectors from './ExerciceSelectors';
 import FlexContainer from './FlexContainer';
 import Layout from './Layout';
 import { containerTypes } from './types';
@@ -39,6 +40,8 @@ const Container = ({
             {children}
           </BorderAnimated>
         );
+      case containerTypes.EXERCICES_SELECTORS:
+        return <ExerciceSelectors />;
       case containerTypes.LAYOUT:
         return <Layout>{children}</Layout>;
 

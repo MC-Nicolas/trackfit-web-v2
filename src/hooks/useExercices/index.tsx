@@ -48,7 +48,7 @@ const useExercices = ({ category, exercice, by, typeOfResult }: useExercicesProp
     if (!exercice || !category || !by || !typeOfResult) return;
     (async () => {
       const res = await getResults(category, exercice, by, typeOfResult);
-      setResults(res);
+      if (res) setResults(res);
     })();
   }, [category, exercice, by, typeOfResult]);
 

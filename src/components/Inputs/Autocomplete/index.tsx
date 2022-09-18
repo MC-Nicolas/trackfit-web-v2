@@ -14,6 +14,7 @@ const ComboBox = ({ label, value, options, onChange }: AutocompleteProps) => {
     <Autocomplete
       value={value ?? ''}
       onChange={onChange}
+      freeSolo
       disablePortal
       options={options}
       sx={{ width: 300 }}
