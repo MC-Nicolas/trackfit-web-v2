@@ -1,6 +1,7 @@
 import React from 'react';
 import AnimatedWithLabel from './AnimatedWithLabel';
 import AutoComplete from './Autocomplete';
+import BasicSelect from './BasicSelect/BasicSelect';
 import { inputTypes } from './types';
 
 type InputProps = {
@@ -24,6 +25,14 @@ const Input = ({ type, inputType = 'text', label, value, options, onChange }: In
           <AutoComplete
             label={label}
             value={value}
+            options={options ?? ['No option available']}
+            onChange={onChange}
+          />
+        );
+      case inputTypes.BASIC_SELECT:
+        return (
+          <BasicSelect
+            value={value ?? ''}
             options={options ?? ['No option available']}
             onChange={onChange}
           />

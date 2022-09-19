@@ -81,3 +81,23 @@ export const getResults = async (
     toast.error(error);
   }
 };
+
+export const getMeasurements = async (email: string, bodyPart: string, side: string) => {
+  const docRef = collection(
+    database,
+    'users',
+    email,
+    'measurements',
+    bodyPart.toLowerCase(),
+    side.toLowerCase()
+  );
+  const snapshot = await getDocs(docRef);
+
+  return snapshot.docs.map((doc) => {
+    return {
+      name: side,
+      id: doc.id,
+      ...doc.data(),
+    };
+  });
+};
