@@ -7,6 +7,7 @@ type ButtonProps = {
   variant?: 'primary' | 'secondary';
   isLink?: boolean;
   href?: string;
+  onClick?: any;
 };
 
 const Button = ({
@@ -15,17 +16,21 @@ const Button = ({
   variant = 'primary',
   isLink = false,
   href,
+  onClick,
 }: ButtonProps): JSX.Element => {
   const buttonsRenderer = (): JSX.Element => {
     switch (type) {
       case 'login':
-        return <Rounded text="Login" variant="primary" isLink href="/login" />;
+        return <Rounded onClick={onClick} text="Login" variant="primary" isLink href="/login" />;
       case 'signup':
-        return <Rounded text="Sign up" variant="secondary" isLink href="/signup" />;
+        return (
+          <Rounded onClick={onClick} text="Sign up" variant="secondary" isLink href="/signup" />
+        );
       case 'rounded':
         return (
           <Rounded
-            text={text ?? 'Error in your button'}
+            onClick={onClick}
+            text={text ?? 'No text in your button'}
             variant={variant}
             isLink={isLink}
             href={href}

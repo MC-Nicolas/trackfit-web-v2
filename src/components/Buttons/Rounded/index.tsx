@@ -7,9 +7,10 @@ type RoundedProps = {
   variant: 'primary' | 'secondary';
   isLink?: boolean;
   href?: string;
+  onClick?: any;
 };
 
-const Rounded = ({ text, variant, isLink, href }: RoundedProps) => {
+const Rounded = ({ text, variant, isLink, href, onClick }: RoundedProps) => {
   if (isLink && href) {
     return (
       <button className={`${styles.rounded} ${styles[variant]}`}>
@@ -17,7 +18,11 @@ const Rounded = ({ text, variant, isLink, href }: RoundedProps) => {
       </button>
     );
   }
-  return <button className={`${styles.rounded} ${styles[variant]}`}>{text}</button>;
+  return (
+    <button className={`${styles.rounded} ${styles[variant]}`} onClick={onClick}>
+      {text}
+    </button>
+  );
 };
 
 export default Rounded;
