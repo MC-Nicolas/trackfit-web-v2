@@ -155,3 +155,39 @@ export const addMeasurement = async (
   }
   return response;
 };
+
+export const createNewExerciceInfo = async (
+  category: string,
+  name: string,
+  imgUrl: string,
+  score?: string
+) => {
+  let response: responseType = { success: false, error: null, message: null };
+  try {
+    const exerciceRef = doc(
+      database,
+      'exercicesInfos',
+      category.toLowerCase(),
+      'exercices',
+      name.toLowerCase()
+    );
+    await setDoc(
+      exerciceRef,
+      {
+        name,
+        imgUrl,
+      },
+      { merge: true }
+    );
+    toast.success('Exercice added successfully');
+    return (response = {
+      ...response,
+      success: true,
+      message: `Exercice added successfully`,
+    });
+  } catch (error) {
+    toast.error('Error: ' + error);
+    response.error = error;
+  }
+  return response;
+};

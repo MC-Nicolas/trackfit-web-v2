@@ -101,3 +101,14 @@ export const getMeasurements = async (email: string, bodyPart: string, side: str
     };
   });
 };
+
+export const getExercicesInfo = async (category: string) => {
+  const collectionRef = collection(database, 'exercicesInfos', category.toLowerCase(), 'exercices');
+  const snapshot = await getDocs(collectionRef);
+
+  const exercices = snapshot.docs.map((doc) => {
+    const { name, imgUrl } = doc.data();
+    return { name, imgUrl };
+  });
+  return exercices;
+};

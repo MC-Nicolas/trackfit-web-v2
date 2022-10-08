@@ -2,6 +2,7 @@ import React from 'react';
 import Container from '../Containers';
 import { containerTypes } from '../Containers/types';
 import Text from '../Texts';
+import BasicModal from './Basic';
 import Measurement from './Measurements';
 import { modalTypes } from './types';
 
@@ -10,7 +11,7 @@ type Props = {
   width?: string;
   height?: string;
   title: string;
-  children?: JSX.Element;
+  children?: JSX.Element | JSX.Element[];
   onClose: () => void;
 };
 
@@ -19,6 +20,13 @@ const Modal = ({ title, children, width = '400px', height = '400px', type, onClo
     switch (type) {
       case modalTypes.MEASUREMENTS:
         return <Measurement title={title} width={width} height="600px" onClose={onClose} />;
+
+      case modalTypes.BASIC:
+        return (
+          <BasicModal title={title} width={width} height={height} onClose={onClose}>
+            {children}
+          </BasicModal>
+        );
 
       default:
         return <p>Error with your modal</p>;
