@@ -1,4 +1,5 @@
 import React from 'react';
+import BlurLayer from './BlurLayer';
 import BorderAnimated from './BorderAnimated';
 import ExerciceSelectors from './ExerciceSelectors';
 import FlexContainer from './FlexContainer';
@@ -44,6 +45,9 @@ const Container = ({
         return <ExerciceSelectors />;
       case containerTypes.LAYOUT:
         return <Layout>{children}</Layout>;
+
+      case containerTypes.BLUR_LAYER:
+        return <BlurLayer>{children}</BlurLayer>;
 
       default:
         return <div>Error with your container</div>;

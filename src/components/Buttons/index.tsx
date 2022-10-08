@@ -1,9 +1,10 @@
 import React from 'react';
 import Rounded from './Rounded';
+import Squared from './Squared';
 
 type ButtonProps = {
   text?: string;
-  type: 'login' | 'signup' | 'rounded';
+  type: 'login' | 'signup' | 'rounded' | 'squared';
   variant?: 'primary' | 'secondary';
   isLink?: boolean;
   href?: string;
@@ -29,6 +30,17 @@ const Button = ({
       case 'rounded':
         return (
           <Rounded
+            onClick={onClick}
+            text={text ?? 'No text in your button'}
+            variant={variant}
+            isLink={isLink}
+            href={href}
+          />
+        );
+
+      case 'squared':
+        return (
+          <Squared
             onClick={onClick}
             text={text ?? 'No text in your button'}
             variant={variant}

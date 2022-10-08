@@ -6,11 +6,12 @@ type BasicSelectProps = {
   options: string[] | { value: string; label: string }[];
   value: string;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  [key: string]: any;
 };
 
-const BasicSelect = ({ value, options, onChange }: BasicSelectProps) => {
+const BasicSelect = ({ value, options, onChange, ...rest }: BasicSelectProps) => {
   return (
-    <select value={value} onChange={onChange} className={styles.basic}>
+    <select value={value} onChange={onChange} className={styles.basic} {...rest}>
       {options.map((option) => {
         if (typeof option === 'string')
           return (

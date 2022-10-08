@@ -35,10 +35,22 @@ const Navbar = () => {
         section="exercices"
       />
       <IconsWithInvert
+        isInverted={router.pathname === '/create'}
+        baseIcon={plusIcon}
+        invertedIcon={plusIconInverted}
+        section="create"
+      />
+      <IconsWithInvert
         isInverted={router.pathname === '/performances'}
         baseIcon={chartIcon}
         invertedIcon={chartIconInverted}
         section="performances"
+      />
+      <IconsWithInvert
+        isInverted={router.pathname === '/measurements'}
+        baseIcon={measureIcon}
+        invertedIcon={measureIconInverted}
+        section="measurements"
       />
       <IconsWithInvert
         isInverted={router.pathname === '/gallery'}
@@ -47,18 +59,6 @@ const Navbar = () => {
         section="gallery"
       />
 
-      <IconsWithInvert
-        isInverted={router.pathname === '/measurements'}
-        baseIcon={measureIcon}
-        invertedIcon={measureIconInverted}
-        section="measurements"
-      />
-      <IconsWithInvert
-        isInverted={router.pathname === '/create'}
-        baseIcon={plusIcon}
-        invertedIcon={plusIconInverted}
-        section="create"
-      />
       <IconsWithInvert
         isInverted={router.pathname === '/settings'}
         baseIcon={settingsIcon}

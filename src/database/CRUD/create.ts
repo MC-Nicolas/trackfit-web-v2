@@ -117,3 +117,41 @@ export const handleEmptyDoc = async (docRef: any) => {
     return null;
   }
 };
+
+export const addMeasurement = async (
+  userEmail: string,
+  bodypart: string,
+  side: string | null,
+  measurement: string,
+  date: string
+) => {
+  let response: responseType = { success: false, error: null, message: null };
+  try {
+    const userMeasurementRef = doc(
+      database,
+      'users',
+      userEmail,
+      'measurements',
+      bodypart.toLowerCase(),
+      side ? side.toLowerCase() : 'total',
+      removeSpecialChars(date)
+    );
+    await setDoc(
+      userMeasurementRef,
+      {
+        result: parseFloat(measurement),
+      },
+      { merge: true }
+    );
+    toast.success('Measurement added successfully');
+    return (response = {
+      ...response,
+      success: true,
+      message: `Measurement added successfully`,
+    });
+  } catch (error) {
+    toast.error('Error: ' + error);
+    response.error = error;
+  }
+  return response;
+};

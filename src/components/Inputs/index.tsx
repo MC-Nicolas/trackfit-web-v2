@@ -11,14 +11,29 @@ type InputProps = {
   value?: string;
   options?: string[];
   onChange?: any;
+  [key: string]: any;
 };
 
-const Input = ({ type, inputType = 'text', label, value, options, onChange }: InputProps) => {
+const Input = ({
+  type,
+  inputType = 'text',
+  label,
+  value,
+  options,
+  onChange,
+  ...rest
+}: InputProps) => {
   const inputRenderer = (): JSX.Element => {
     switch (type) {
       case inputTypes.ANIMATED_WITH_LABEL:
         return (
-          <AnimatedWithLabel type={inputType} label={label} value={value} onChange={onChange} />
+          <AnimatedWithLabel
+            type={inputType}
+            label={label}
+            value={value}
+            onChange={onChange}
+            {...rest}
+          />
         );
       case inputTypes.AUTOCOMPLETE:
         return (
@@ -27,6 +42,7 @@ const Input = ({ type, inputType = 'text', label, value, options, onChange }: In
             value={value}
             options={options ?? ['No option available']}
             onChange={onChange}
+            {...rest}
           />
         );
       case inputTypes.BASIC_SELECT:
@@ -35,6 +51,7 @@ const Input = ({ type, inputType = 'text', label, value, options, onChange }: In
             value={value ?? ''}
             options={options ?? ['No option available']}
             onChange={onChange}
+            {...rest}
           />
         );
       default:

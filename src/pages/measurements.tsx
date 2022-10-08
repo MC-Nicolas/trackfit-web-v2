@@ -5,6 +5,8 @@ import Container from '@/components/Containers';
 import { containerTypes } from '@/components/Containers/types';
 import Input from '@/components/Inputs';
 import { inputTypes } from '@/components/Inputs/types';
+import Modal from '@/components/Modals';
+import { modalTypes } from '@/components/Modals/types';
 import { bodyParts, singleMeasurementBodyparts } from '@/data/bodyParts';
 import { getMeasurements } from '@/database/CRUD/read';
 import { Button } from '@mui/material';
@@ -31,13 +33,12 @@ const Measurements = (props: Props) => {
       const right = await getMeasurements('mace_nicolas@icloud.com', bodyPart, 'right');
       const left = await getMeasurements('mace_nicolas@icloud.com', bodyPart, 'left');
       let totalMeasurements = isSingleMeasurement ? [total] : [right, left];
-      //@ts-ignore
-      if (total.every((arr) => arr.length === 0)) {
-        setConfig([]);
+      if (totalMeasurements.length > 1) {
+        //@ts-ignore
+        setConfig(generateConfig(totalMeasurements, '', 'measurements'));
       } else {
         //@ts-ignore
-        // todo
-        // setConfig(generateConfig(total));
+        setConfig(generateConfig(total, '', 'measurements'));
       }
     })();
   }, [bodyPart]);
@@ -47,6 +48,15 @@ const Measurements = (props: Props) => {
       type={containerTypes.FLEX_VERTICAL}
       style={{ justifyContent: 'space-evenly', minHeight: '80vh' }}
     >
+      {modalIsOpen ? (
+        <Modal
+          title="Measurements"
+          type={modalTypes.MEASUREMENTS}
+          onClose={() => setModalIsOpen(false)}
+        />
+      ) : (
+        <></>
+      )}
       <Container type={containerTypes.FLEX_HORIZONTAL} style={{ minHeight: 250 }}>
         <Input
           type={inputTypes.BASIC_SELECT}

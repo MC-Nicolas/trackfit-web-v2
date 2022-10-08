@@ -8,30 +8,22 @@ type TitleProps = {
 
 const Title = ({ text, type, ...rest }: TitleProps): JSX.Element => {
   const titleRenderer = (): JSX.Element => {
-    let titleComponent = null;
     switch (type) {
       case 'h1':
-        titleComponent = <h1 {...rest}>{text}</h1>;
-        break;
+        return <h1 {...rest}>{text}</h1>;
       case 'h2':
-        titleComponent = <h2 {...rest}>{text}</h2>;
-        break;
+        return <h2 {...rest}>{text}</h2>;
       case 'h3':
-        titleComponent = <h3 {...rest}>{text}</h3>;
-        break;
+        return <h3 {...rest}>{text}</h3>;
       case 'h4':
-        titleComponent = <h4 {...rest}>{text}</h4>;
-        break;
+        return <h4 {...rest}>{text}</h4>;
       case 'h5':
-        titleComponent = <h5 {...rest}>{text}</h5>;
-        break;
+        return <h5 {...rest}>{text}</h5>;
       case 'h6':
-        titleComponent = <h6 {...rest}>{text}</h6>;
-        break;
+        return <h6 {...rest}>{text}</h6>;
       default:
-        titleComponent = <h1 {...rest}>Error in your title</h1>;
+        return <h1 {...rest}>Error in your title</h1>;
     }
-    return titleComponent;
   };
   return titleRenderer();
 };

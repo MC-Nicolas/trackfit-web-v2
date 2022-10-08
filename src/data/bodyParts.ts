@@ -1,5 +1,5 @@
 export const bodyParts = [
-  'Forarm',
+  'Forearm',
   'Bicep',
   'Shoulder',
   'Chest',

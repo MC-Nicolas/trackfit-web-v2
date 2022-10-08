@@ -6,11 +6,12 @@ type AnimatedWithLabelProps = {
   label: string;
   value?: string;
   onChange?: any;
+  [key: string]: any;
 };
 
-const AnimatedWithLabel = ({ type, label, value, onChange }: AnimatedWithLabelProps) => {
+const AnimatedWithLabel = ({ type, label, value, onChange, ...rest }: AnimatedWithLabelProps) => {
   return (
-    <div className={styles.inputBox}>
+    <div className={styles.inputBox} {...rest}>
       <input type={type} required value={value} onChange={onChange} />
       <span>{label}</span>
       <i></i>
