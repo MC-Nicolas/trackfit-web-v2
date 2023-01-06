@@ -6,6 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "test:cypress": "cypress run",
+    "test:cypress:open": "cypress open",
     "lint": "next lint",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
@@ -13,10 +15,12 @@
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@material-ui/core": "^4.12.4",
     "@material-ui/lab": "^4.0.0-alpha.61",
     "@mui/icons-material": "^5.10.3",
     "@mui/material": "^5.10.4",
     "@reduxjs/toolkit": "^1.8.5",
+    "cypress": "^12.3.0",
     "firebase": "^9.9.4",
     "framer-motion": "^7.3.5",
     "highcharts": "^10.2.1",
