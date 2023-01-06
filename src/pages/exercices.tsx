@@ -39,7 +39,7 @@ const Exercices = (props: Props) => {
   return (
     <Container
       type={containerTypes.FLEX_VERTICAL}
-      style={{ justifyContent: 'space-evenly', minHeight: '90vh' }}
+      style={{ justifyContent: 'space-evenly', minHeight: '100vh', backgroundColor: '#212121' }}
     >
       {addModalIsOpen ? <AddModal onClose={() => setAddModalIsOpen(false)} /> : <></>}
       <Container type={containerTypes.FLEX_HORIZONTAL} height="200px">
@@ -70,7 +70,6 @@ const Exercices = (props: Props) => {
         type={containerTypes.FLEX_HORIZONTAL}
         style={{
           marginTop: 50,
-          backgroundColor: '#222',
           flexGrow: 1,
           flexWrap: 'wrap',
           gap: 15,

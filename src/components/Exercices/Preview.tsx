@@ -17,13 +17,13 @@ const Preview = ({ title, imgUrl, efficiency }: Props) => {
       width="300px"
       height="300px"
       style={{
-        backgroundColor: 'white',
+        backgroundColor: '#222',
         borderRadius: 5,
         boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.2)',
       }}
     >
       <Container type={containerTypes.FLEX_VERTICAL} width="300px" height="50px">
-        <p style={{ color: 'black', fontSize: 24 }}>{title}</p>
+        <p style={{ color: 'orange', fontSize: 24 }}>{title}</p>
       </Container>
       <div style={{ width: 250, height: 180, position: 'relative' }}>
         <Image
@@ -40,9 +40,9 @@ const Preview = ({ title, imgUrl, efficiency }: Props) => {
         type={containerTypes.FLEX_HORIZONTAL}
         width="300px"
         height="80px"
-        style={{ backgroundColor: 'white' }}
+        style={{ backgroundColor: '#222' }}
       >
-        <p style={{ color: 'black', fontSize: 20 }}>{efficiency || 0} / 10</p>
+        <p style={{ color: 'orange', fontSize: 20 }}>{efficiency || 0} / 10</p>
       </Container>
     </Container>
   );

@@ -14,9 +14,7 @@ import React, { useEffect, useState } from 'react';
 import Container from '..';
 import { containerTypes } from '../types';
 
-type Props = {};
-
-const ExerciceSelectors = (props: Props) => {
+const ExerciceSelectors = () => {
   const dispatch = useAppDispatch();
   const { exercice, category, by, typeOfResultOption } = useAppSelector(
     (state) => state.exercicesSelectors
@@ -40,7 +38,7 @@ const ExerciceSelectors = (props: Props) => {
     <Container
       type={containerTypes.FLEX_HORIZONTAL}
       height="250px"
-      style={{ minHeight: 250, flexWrap: 'wrap' }}
+      style={{ minHeight: 250, flexWrap: 'wrap', backgroundColor: '#222' }}
     >
       <Input
         type={inputTypes.AUTOCOMPLETE}

@@ -69,7 +69,7 @@ const Create = () => {
   return (
     <Container
       type={containerTypes.FLEX_VERTICAL}
-      style={{ justifyContent: 'space-evenly', minHeight: '80vh' }}
+      style={{ justifyContent: 'space-evenly', minHeight: '100vh', backgroundColor: '#212121' }}
     >
       <Container type={containerTypes.EXERCICES_SELECTORS}>
         <></>
@@ -79,7 +79,7 @@ const Create = () => {
           <FormControlLabel
             control={<Checkbox checked={withResult} onChange={() => setWithResult(!withResult)} />}
             label="With result"
-            sx={{ color: 'black' }}
+            sx={{ color: 'white' }}
           />
         </FormGroup>
       </Container>
@@ -88,7 +88,6 @@ const Create = () => {
         style={{
           justifyContent: 'space-evenly',
           flexWrap: 'wrap',
-          backgroundColor: '#222',
           padding: '50px 10px',
         }}
       >

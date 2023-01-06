@@ -18,7 +18,7 @@ const Performances = () => {
   return (
     <Container
       type={containerTypes.FLEX_VERTICAL}
-      style={{ justifyContent: 'space-evenly', minHeight: '80vh' }}
+      style={{ justifyContent: 'space-evenly', minHeight: '100vh' }}
     >
       <Container type={containerTypes.EXERCICES_SELECTORS}>
         <></>
