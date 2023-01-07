@@ -18,8 +18,8 @@ const useStyles = makeStyles({
 });
 
 const CssTextField = styled(TextField)({
-  '& .MuiInput-input': {
-    color: 'white',
+  '& > *': {
+    color: 'white!important',
   },
   '& label.Mui-focused': {
     color: 'green',
