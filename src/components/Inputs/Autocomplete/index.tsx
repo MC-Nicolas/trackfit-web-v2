@@ -1,8 +1,7 @@
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import { makeStyles } from '@material-ui/core/styles';
-import { styled } from '@mui/material';
+import { styled } from '@mui/system';
 
 interface AutocompleteProps {
   label: string;
@@ -10,12 +9,6 @@ interface AutocompleteProps {
   options: string[];
   onChange: any;
 }
-const useStyles = makeStyles({
-  paper: {
-    color: 'white',
-    backgroundColor: '#212121',
-  },
-});
 
 const CssTextField = styled(TextField)({
   '& > *': {
@@ -40,14 +33,18 @@ const CssTextField = styled(TextField)({
   },
 });
 
-const ComboBox = ({ label, value, options, onChange }: AutocompleteProps) => {
-  const classes = useStyles();
+const StyledAutocomplete = styled(Autocomplete)({
+  '& .MuiAutocomplete-paper': {
+    color: 'white',
+    backgroundColor: '#212121',
+  },
+});
 
+const ComboBox = ({ label, value, options, onChange }: AutocompleteProps) => {
   return (
-    <Autocomplete
+    <StyledAutocomplete
       value={value ?? ''}
       onChange={onChange}
-      classes={{ paper: classes.paper }}
       freeSolo
       disablePortal
       options={options}
